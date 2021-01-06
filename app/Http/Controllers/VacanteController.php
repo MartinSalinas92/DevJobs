@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\File;
 class VacanteController extends Controller
 {
 
-  
+
     /**
      * Display a listing of the resource.
      *
@@ -57,7 +57,7 @@ class VacanteController extends Controller
      */
     public function store(Request $request)
     {
-       
+
         $Developer=$request->validate([
 
             'titulo'=>'required|min:10',
@@ -88,7 +88,7 @@ class VacanteController extends Controller
         ]);
 
         return view('vacantes.index');
-      
+
     }
 
     /**
@@ -100,9 +100,9 @@ class VacanteController extends Controller
     public function show(Vacante $vacante)
     {
         //return $vacante;
-        
 
-      
+
+
 
         return view('vacantes.show', compact('vacante'));
     }
@@ -136,10 +136,18 @@ class VacanteController extends Controller
      * @param  \App\Models\Vacante  $vacante
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Vacante $vacante)
+    public function destroy(Vacante $vacante, Request $request)
     {
-        //
+
+
+
+
+
+        $vacante->delete();
+        return response()->json(['mensaje'=> 'Se ha eliminado la vacante '. $vacante->titulo]);
     }
+
+
 
     public function imagen(Request $request){
 
@@ -160,7 +168,7 @@ class VacanteController extends Controller
 
     public function borrar(Request $request){
         if ($request->ajax()) {
-            
+
             $imagen= $request->get('imagen');
 
             //borra la imagen de la carpeta Storage

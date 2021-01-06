@@ -47,7 +47,7 @@
                 </a>
 
             <a href="{{route('notificaciones')}}" class="rounded-circle bg-info text-white py-1 px-2 ">
-                 
+                 {{Auth::user()->unreadNotifications->count()}}
 
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

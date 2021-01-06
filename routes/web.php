@@ -45,8 +45,12 @@ Route::post('/vacantes/borrarimagen', [App\Http\Controllers\VacanteController::c
 //notificaciones invoque
 Route::get('/notificaciones', NotificationesController::class )->name('notificaciones');
 
-//Estado 
+//Estado
 Route::post('/activos/{vacante}', [App\Http\Controllers\VacanteController::class,'EstadoVacante'])->name('vacantes.estado');
+
+//eliminar Vacantes
+Route::delete('/vacantes/{vacante}', [App\Http\Controllers\VacanteController::class,'destroy'])->name('vacantes.destroy');
+
 
 
 });

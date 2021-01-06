@@ -68,7 +68,10 @@
                     </td>
                     <td>
                         <a href="" class="btn btn-warning "><i class="fa fa-edit"></i>editar</a>
-                        <eliminarvacante></eliminarvacante>
+                        <eliminarvacante
+                            :eliminarvacanteid="{{$item->id}}"
+
+                        ></eliminarvacante>
                     <a href="{{route('vacantes.show', $item->id)}}" class="btn btn-success ">  <i class="far fa-eye"></i>Ver </a>
 
 

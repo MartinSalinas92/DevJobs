@@ -29,11 +29,11 @@ class CreateVacantesTable extends Migration
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
 
-            $table->foreign('categoria_id')->references('id')->on('categorias');
-            $table->foreign('experiencia_id')->references('id')->on('experiencias');
-            $table->foreign('ubicacion_id')->references('id')->on('ubicacions');
-            $table->foreign('salario_id')->references('id')->on('salarios');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade');
+            $table->foreign('experiencia_id')->references('id')->on('experiencias')->onDelete('cascade');
+            $table->foreign('ubicacion_id')->references('id')->on('ubicacions')->onDelete('cascade');
+            $table->foreign('salario_id')->references('id')->on('salarios')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
