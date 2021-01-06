@@ -1,0 +1,12 @@
+//DropZone
+
+.dropzone{
+
+    border: 2px dashed white;
+    .dz-error{
+        display: none;
+    }
+    .dz-message .dz-button{
+        color: #666;
+    }
+}
