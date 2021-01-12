@@ -13,7 +13,7 @@
 
 
     <h1 class="text-center"> Administrar Vacantes</h1>
-    @if (count($vacante) > 0)
+    @if (count($vacantes) > 0)
     <div class="col-md-12 mx-auto bg-white p-4">
 
 
@@ -38,7 +38,7 @@
 
                 </thead>
                 <tbody>
-                    @foreach ($vacante as $item)
+                    @foreach ($vacantes as $item)
                     <tr>
                         <td> {{$item->titulo}} </td>
                         <td> {{$item->categoria->nombre}} </td>
@@ -67,7 +67,7 @@
 
                     </td>
                     <td>
-                        <a href="" class="btn btn-warning "><i class="fa fa-edit"></i>editar</a>
+                        <a href="{{route('vacantes.edit', $item->id)}}" class="btn btn-warning "><i class="fa fa-edit"></i>editar</a>
                         <eliminarvacante
                             :eliminarvacanteid="{{$item->id}}"
 
@@ -101,7 +101,7 @@
 
     <div class="col-12 mt-4 justify-content-center">
 
-        {{$vacante->links()}}
+        {{$vacantes->links()}}
 
 
 

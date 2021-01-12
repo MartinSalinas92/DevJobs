@@ -26,10 +26,10 @@ class VacanteController extends Controller
 
         $user_id= Auth::user()->id;
 
-        $vacante= Vacante::where('user_id',$user_id)->paginate(3);
+        $vacantes= Vacante::where('user_id',$user_id)->paginate(3);
 
         //return $vacante;
-        return view('vacantes.index', compact('vacante'));
+        return view('vacantes.index', compact('vacantes'));
     }
 
     /**
@@ -115,7 +115,14 @@ class VacanteController extends Controller
      */
     public function edit(Vacante $vacante)
     {
-        //
+
+        $categoria= Categoria::all();
+        $experiencia= Experiencia::all();
+        $ubicacion= Ubicacion::all();
+        $salario= Salario::all();
+
+        //return dd($categoria);
+        return view('vacantes.edit', compact('categoria', 'experiencia', 'ubicacion', 'salario','vacante'));
     }
 
     /**
@@ -127,7 +134,35 @@ class VacanteController extends Controller
      */
     public function update(Request $request, Vacante $vacante)
     {
-        //
+       //return $request->all();
+
+       $data=$request->validate([
+
+
+        'titulo'=>'required|min:10',
+        'categoria'=>'required',
+        'experiencia'=>'required',
+        'ubicacion'=>'required',
+        'salario'=>'required',
+        'descripcion'=>'required|min:50',
+        'imagen'=>'required',
+        'skills'=>'required',
+
+
+       ]);
+
+        $vacante->titulo=$data['titulo'];
+        $vacante->categoria_id=$data['categoria'];
+        $vacante->experiencia_id=$data['experiencia'];
+        $vacante->ubicacion_id=$data['ubicacion'];
+        $vacante->salario_id=$data['salario'];
+        $vacante->descripcion=$data['descripcion'];
+        $vacante->imagen=$data['imagen'];
+        $vacante->skill=$data['skills'];
+        $vacante->save();
+
+
+        return view('vacantes.edit');
     }
 
     /**

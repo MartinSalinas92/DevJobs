@@ -46,10 +46,7 @@
                     {{ config('app.name', 'DevJobs') }}
                 </a>
 
-            <a href="{{route('notificaciones')}}" class="rounded-circle bg-info text-white py-1 px-2 ">
-                 {{Auth::user()->unreadNotifications->count()}}
 
-                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -80,7 +77,10 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
+                                <a href="{{route('notificaciones')}}" class="rounded-circle bg-info text-white py-1 px-2 ">
+                                    {{Auth::user()->unreadNotifications->count()}}
 
+                                   </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

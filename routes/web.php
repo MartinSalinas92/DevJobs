@@ -32,7 +32,8 @@ Route::group(['middleware' => ['auth','verified']], function () {
 Route::get('/vacantes', [App\Http\Controllers\VacanteController::class,'index'])->name('vacantes.index');
 Route::get('/vacantes/create', [App\Http\Controllers\VacanteController::class,'create'])->name('vacantes.create');
 Route::post('/vacantes', [App\Http\Controllers\VacanteController::class,'store'])->name('vacantes.store');
-
+Route::get('/vacantes/{vacante}/edit', [App\Http\Controllers\VacanteController::class,'edit'])->name('vacantes.edit');
+Route::put('/vacante/{vacante}', [App\Http\Controllers\VacanteController::class,'update'])->name('vacantes.update');
 //Rutas Candidato
 Route::post('/candidatos',[App\Http\Controllers\CandidatoController::class,'store'])->name('candidatos.store');
 

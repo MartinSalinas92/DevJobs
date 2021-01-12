@@ -7,20 +7,21 @@
 
 @endsection
 
+
 @section('botones')
 
-    <a href="{{route('vacantes.index')}}" class="btn btn-outline-dark">Volver</a>
+<a href="{{route('vacantes.index')}}" class="btn btn-info">volver</a>
 
 @endsection
 
-
 @section('content')
 
-        <h1 class="text-center"> Crear Vacantes</h1>
+    <h1 class="text-center">Editar Vacantes {{$vacante->titulo}}</h1>
 
-        <div class="row justify-content-center mt-5">
-        <form method="POST" enctype = "multipart/form-data" action="{{route('vacantes.store')}}">
+    <div class="row justify-content-center mt-5">
+        <form method="POST" enctype = "multipart/form-data" action="{{route('vacantes.update', $vacante->id)}}">
                 @csrf
+                @method('PUT')
                 <div class="form-group">
                     <label for="titulo">Titulo</label>
 
@@ -30,7 +31,7 @@
                          class="form-control"
                          name="titulo"
                          id="titulo"
-                        value="{{old('titulo')}}"
+                        value="{{$vacante->titulo}}"
 
                         />
 
@@ -57,7 +58,7 @@
                             <option disabled selected>Seleccionar </option>
                             @foreach ($categoria as  $cat)
                                 <option value="{{$cat->id}}"
-                                    {{old('categoria')==$cat->id ? 'selected' : ''}}
+                                    {{$vacante->categoria_id==$cat->id ? 'selected' : ''}}
                                     >{{$cat->nombre}} </option>
 
                             @endforeach
@@ -93,7 +94,7 @@
                         @foreach ($experiencia as $item)
 
                     <option value="{{$item->id}}"
-                        {{old('experiencia')==$item->id ? 'selected' : ''}}
+                        {{$vacante->experiencia_id==$item->id ? 'selected' : ''}}
 
 
                         >
@@ -127,7 +128,7 @@
                         @foreach ($ubicacion as $item)
 
                     <option value="{{$item->id}}">
-                        {{old('ubicacion')==$item->id ? 'selected' : ''}}
+                        {{$vacante->ubicacion_id==$item->id ? 'selected' : ''}}
                             {{$item->nombre}}
                     </option>
 
@@ -157,7 +158,7 @@
                         @foreach ($salario as $item)
 
                     <option value="{{$item->id}}"
-                        {{old('salario')==$item->id ? 'selected' : ''}}
+                        {{$vacante->salario_id==$item->id ? 'selected' : ''}}
 
 
                         >
@@ -180,7 +181,12 @@
                         <textarea
                         name="descripcion"
                         class="form-control"
-                        rows="10" cols="50"></textarea>
+                        rows="10" cols="50">
+
+                        {{$vacante->descripcion}}
+
+
+                        </textarea>
 
                         @error('descripcion')
                         <span class="invalid-feedback d-block" role="alert">
@@ -197,7 +203,7 @@
 
                         <div id="dropzoneDevJobs" class="dropzone form-control bg-gray-100 input-lg"></div>
 
-                    <input type="hidden" name="imagen" id="imagen" value="{{old('imagen')}}"/>
+                    <input type="hidden" name="imagen" id="imagen" value="{{$vacante->imagen}}"/>
 
                         @error('imagen')
                         <span class="invalid-feedback d-block" role="alert">
@@ -219,7 +225,7 @@
                       <habilidades-skill
 
                         :skills="{{ json_encode($skills)}}"
-                        :oldskill="{{ json_encode(old('skills')) }}"
+                        :oldskill="{{ json_encode($vacante->skill) }}"
 
                       >
 
@@ -240,7 +246,7 @@
                     <div class="form-group">
 
 
-                            <input type="submit" class="btn btn-success mt-5 btn-block" value="Guardar">
+                            <input type="submit" class="btn btn-success mt-5 btn-block" value="Modificar">
 
 
 
@@ -261,6 +267,9 @@
 
 
         </div>
+
+
+
 
 
 
