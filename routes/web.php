@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InicioController;
 use App\Http\Controllers\NotificationesController;
 use Symfony\Component\Routing\Annotation\Route as AnnotationRoute;
 
@@ -16,13 +17,11 @@ use Symfony\Component\Routing\Annotation\Route as AnnotationRoute;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 //Rutas Protegidas
 Route::group(['middleware' => ['auth','verified']], function () {
@@ -55,6 +54,9 @@ Route::delete('/vacantes/{vacante}', [App\Http\Controllers\VacanteController::cl
 
 
 });
+
+//Pagina de Inicio
+Route::get('/', InicioController::class)->name('inicio');
 
 //Muestra los trabajos del frontend sin autenticacion
 Route::get('/vacantes/{vacante}', [App\Http\Controllers\VacanteController::class,'show'])->name('vacantes.show');
