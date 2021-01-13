@@ -37,7 +37,7 @@
 
                             <li class="text-white col-4">
                                 <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-                                    <h5 class="card-header">{{$item->titulo}}</h5>
+                                    <h5 class="card-header font-weight-bold">{{$item->titulo}}</h5>
                                         <div class="card-body">
 
                                           <p class="card-text">
@@ -45,11 +45,15 @@
                                                 {{$item->categoria->nombre}}</span> </p>
 
                                           <p class="card-text">
-                                              Lugar: <span>
+                                              Ubicacion: <span>
                                                 {{$item->ubicacion->nombre}}
                                                 </span> </p>
+                                          <p class="card-text">
+                                              Experiencia: <span>
+                                                {{$item->experiencia->nombre}}
+                                                </span> </p>
 
-                                          <a href="/storage/cv/{{$item->cv}}" target="_blank" class="btn btn-danger"> Ver cv</a>
+                                          <a href="{{route('vacantes.show', $item->id)}}"  class="btn btn-danger"> Ver Vacante</a>
                                         </div>
                                       </div>
 
