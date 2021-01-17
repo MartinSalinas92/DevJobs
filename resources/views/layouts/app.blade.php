@@ -99,6 +99,14 @@
             </div>
         </nav>
 
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-center">
+
+            @yield('navegacion')
+
+        </nav>
+
+
+
         <div class="container">
              <div class="row">
                  <div class="py-4 mt-5 col-12">

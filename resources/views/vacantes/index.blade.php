@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('navegacion')
+
+    @include('ui.categoria')
+
+@endsection
+
 @section('botones')
 
     <a href="{{route('vacantes.index')}}" class="btn btn-outline-dark">VER VACANTES</a>

@@ -58,8 +58,13 @@ Route::delete('/vacantes/{vacante}', [App\Http\Controllers\VacanteController::cl
 //Pagina de Inicio
 Route::get('/', InicioController::class)->name('inicio');
 
+Route::get('/categorias/{categoria}',[App\Http\Controllers\CategoriaController::class,'show'])->name('categoria.show');
+
 //Muestra los trabajos del frontend sin autenticacion
 Route::get('/vacantes/{vacante}', [App\Http\Controllers\VacanteController::class,'show'])->name('vacantes.show');
 Route::get('/candidatos/{id}',[App\Http\Controllers\CandidatoController::class,'index'])->name('candidatos.index');
 
+//buscador
+Route::get('/busqueda/buscarresul', [App\Http\Controllers\VacanteController::class,'resultado'])->name('vacantes.resultado');
+Route::post('/busqueda/buscar', [App\Http\Controllers\VacanteController::class,'buscar'])->name('vacantes.buscar');
 

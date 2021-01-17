@@ -7,6 +7,7 @@ use App\Models\Vacante;
 use App\Models\Categoria;
 use App\Models\Ubicacion;
 use App\Models\Experiencia;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -234,5 +235,32 @@ class VacanteController extends Controller
          return response()->json(['respuesta'=> 'Correcto']);
 
 
+    }
+
+    public function buscar(Request $request){
+        //return 'buscando...';
+
+       // return $request->all();
+
+       $data=$request->validate([
+           'categoria'=>'required',
+           'ubicacion'=>'required'
+
+
+       ]);
+
+       $Busquedavacante=Vacante::where([
+            'categoria_id' =>$data['categoria'],
+            'ubicacion_id'=> $data['ubicacion']
+
+       ])->get();
+
+       //return $Busquedavacante;
+
+       return view('busqueda.index', compact('Busquedavacante'));
+    }
+
+    public function resultado(){
+        return 'resultado';
     }
 }

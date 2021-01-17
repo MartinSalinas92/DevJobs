@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('navegacion')
+
+    @include('ui.categoria')
+
+@endsection
 
 @section('content')
 
@@ -10,11 +15,15 @@
 
 
                 <div class="col-sm-6 col-md-6 col-xs-12">
-                    <h2>Encuentra un Trabajo remoto en tu pais</h2>
+                    <h1>Encuentra un Trabajo remoto en tu pais</h1>
 
                     <p class="fs-1 fw-bold text-center mt-10"><strong style="color: #936;">Desarrollador/Diseñador Web</strong></p>
 
+
+                    @include('ui.buscador')
                 </div>
+
+
 
 
 
